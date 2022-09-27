@@ -2,11 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import CopyToClipboard from "react-copy-to-clipboard";
 
-const LinkResult = ({ inputValue }) => {
+const LinkResult = ({ inputValue, setList, list }) => {
   const [shortenLink, setShortenLink] = useState("");
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [newList, setNewList] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -40,20 +41,26 @@ const LinkResult = ({ inputValue }) => {
   if(error) {
     return <p className="noData">Something went wrong :(</p>
   }
-
+  console.log('newList', newList)
+const newchangeList = () =>{
+const newlist = list.concat(shortenLink);
+return setNewList(newlist)
+}
 
   return (
     <>
       {shortenLink && (
         <div className="result">
-          <p>{shortenLink}</p>
+          <p onChange={newchangeList}>{shortenLink}</p>
           <CopyToClipboard
             text={shortenLink}
             onCopy={() => setCopied(true)}
           >
             <button className={copied ? "copied" : ""}>Copy to Clipboard</button>
           </CopyToClipboard>
+          
         </div>
+        
       )}
     </>
   )

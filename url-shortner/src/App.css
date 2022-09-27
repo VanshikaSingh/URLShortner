@@ -74,9 +74,15 @@
   color: #fff;
   font-size: 1rem;
 }
-
-
-
+/*History*/
+.historyContainer{
+  background-color: #ffffff;
+  width: 50%;
+  border: 0.1rem solid black;
+  padding: 2rem;
+  margin: 5rem;
+}
+/*History*/
 
 
 /*background animation */

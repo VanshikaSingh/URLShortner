@@ -3,7 +3,9 @@ import { useState } from "react";
 
 function InputShortner({ setInputValue }) {
   const [value, setValue] = useState("");
-const handleClick = () =>{
+
+const handleClick = (e) =>{
+  e.preventDefault()
   setInputValue(value);
   setValue('')
 }
